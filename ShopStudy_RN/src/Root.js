@@ -4,10 +4,10 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     StyleSheet,
-    View,
+    Image,
 } from 'react-native';
 
 //  导入系统及第三方组件
@@ -20,36 +20,73 @@ import Mine from './Compoment/Mine/Mine'
 import More from './Compoment/More/More'
 
 export default class ShopStudy_RN extends Component {
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            selectedTab: 'home'
+        };
+    }
+
     render() {
         return (
-            <View style={styles.container}>
 
-                {/* 根据不同平台，做是配处理 */}
-                {/*<Text>我是{Platform.OS === 'ios' ? 'iOS' : 'android'}</Text>*/}
+            <TabNavigator>
 
-                <TabNavigator>
+                {/* 首页 */}
+                <TabNavigator.Item
+                    title='首页'
+                    renderIcon={() => <Image source={{uri: 'icon_tabbar_homepage'}} style={styles.image}/>}
+                    renderSelectedIcon={() => <Image source={{uri: 'icon_tabbar_homepage_selected'}} style={styles.image}/>}
+                    selected={this.state.selectedTab === 'home'}
+                    onPress={() => this.setState({selectedTab: 'home'})}
+                >
+                    <Home/>
+                </TabNavigator.Item>
 
-                    {/* 首页 */}
+                {/* 商品 */}
+                <TabNavigator.Item
+                    title='商品'
+                    renderIcon={() => <Image source={{uri: 'icon_tabbar_merchant_normal'}} style={styles.image}/>}
+                    renderSelectedIcon={() => <Image source={{uri: 'icon_tabbar_merchant_selected'}} style={styles.image}/>}
+                    selected={this.state.selectedTab === 'shop'}
+                    onPress={() => this.setState({selectedTab: 'shop'})}
+                >
+                    <Shop/>
+                </TabNavigator.Item>
 
-                    {/* 商品 */}
+                {/* 我的 */}
+                <TabNavigator.Item
+                    title='我的'
+                    renderIcon={() => <Image source={{uri: 'icon_tabbar_mine'}} style={styles.image}/>}
+                    renderSelectedIcon={() => <Image source={{uri: 'icon_tabbar_mine_selected'}} style={styles.image}/>}
+                    selected={this.state.selectedTab === 'mine'}
+                    onPress={() => this.setState({selectedTab: 'mine'})}
+                >
+                    <Mine/>
+                </TabNavigator.Item>
 
-                    {/* 我的 */}
+                {/* 更多 */}
+                <TabNavigator.Item
+                    title='More'
+                    renderIcon={() => <Image source={{uri: 'icon_tabbar_misc'}} style={styles.image}/>}
+                    renderSelectedIcon={() => <Image source={{uri: 'icon_tabbar_misc_selected'}} style={styles.image}/>}
+                    selected={this.state.selectedTab === 'more'}
+                    onPress={() => this.setState({selectedTab: 'more'})}
+                >
+                    <More/>
+                </TabNavigator.Item>
 
-                    {/* 更多 */}
-
-
-                </TabNavigator>
-
-            </View>
+            </TabNavigator>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
+    image: {
+        width: 22,
+        height: 22
+    }
 });
