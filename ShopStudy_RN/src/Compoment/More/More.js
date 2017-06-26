@@ -6,10 +6,22 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 export default class More extends Component {
+
+    static navigationOptions = {
+        title: '更多',
+        tabBarLabel: '更多',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={{uri: 'icon_tabbar_misc'}}
+                style={styles.iconStyle}
+            />
+        )
+    };
 
     render() {
         return(
@@ -26,5 +38,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'blue'
+    },
+    iconStyle: {
+        width: 22,
+        height: 22
     }
 });

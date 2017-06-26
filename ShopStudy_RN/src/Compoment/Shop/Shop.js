@@ -6,10 +6,22 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 export default class Shop extends Component {
+
+    static navigationOptions = {
+        title: '商品',
+        tabBarLabel: '商品',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={{uri: 'icon_tabbar_merchant_normal'}}
+                style={styles.iconStyle}
+            />
+        )
+    };
 
     render() {
         return(
@@ -26,5 +38,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'pink'
+    },
+    iconStyle: {
+        width: 22,
+        height: 22
     }
 });

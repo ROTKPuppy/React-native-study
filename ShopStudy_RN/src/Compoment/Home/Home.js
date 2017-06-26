@@ -6,10 +6,22 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 export default class Home extends Component {
+
+    static navigationOptions = {
+        title: '首页',
+        tabBarLabel: '首页',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={{uri: 'icon_tabbar_homepage'}}
+                style={styles.iconStyle}
+            />
+        )
+    };
 
     render() {
         return(
@@ -26,5 +38,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'red'
+    },
+    iconStyle: {
+        width: 22,
+        height: 22
     }
 });

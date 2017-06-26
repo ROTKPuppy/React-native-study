@@ -6,10 +6,22 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 export default class Mine extends Component {
+
+    static navigationOptions = {
+        title: '我的',
+        tabBarLabel: '我的',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={{uri: 'icon_tabbar_mine'}}
+                style={styles.iconStyle}
+            />
+        )
+    };
 
     render() {
         return(
@@ -26,5 +38,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'yellow'
+    },
+    iconStyle: {
+        width: 22,
+        height: 22
     }
 });
