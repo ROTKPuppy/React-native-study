@@ -15,6 +15,7 @@ import Home from './Compoment/Home/Home'
 import Shop from './Compoment/Shop/Shop'
 import Mine from './Compoment/Mine/Mine'
 import More from './Compoment/More/More'
+import Detail from './Compoment/Detail/Detail'
 
 const Tab = TabNavigator ({
    Home: {
@@ -58,6 +59,9 @@ const Navigator = StackNavigator ({
         screen: Tab
     },
 
+    Detail: {
+        screen: Detail
+    }
 });
 
 export default Navigator;

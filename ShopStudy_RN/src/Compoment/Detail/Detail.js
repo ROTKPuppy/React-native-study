@@ -7,26 +7,25 @@ import {
     StyleSheet,
     View,
     Text,
-    Image
+    TouchableOpacity,
 } from 'react-native';
 
-export default class More extends Component {
+export default class Detail extends Component {
 
     static navigationOptions = {
-        title: '更多',
-        tabBarLabel: '更多',
-        tabBarIcon: ({ tintColor }) => (
-            <Image
-                source={{uri: 'icon_tabbar_misc'}}
-                style={styles.iconStyle}
-            />
-        )
+        title: '详情',
     };
 
     render() {
         return(
             <View style={styles.container}>
-                <Text>更多</Text>
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.navigation.goBack()
+                    }}
+                >
+                    <Text>详情</Text>
+                </TouchableOpacity>
             </View>
         )
     }
